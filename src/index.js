@@ -7,6 +7,8 @@ import Header from './routes/Header'
 import LoadingComponent from './components/LoadingComponent'
 import AuthenticatedComponent from './components/AuthenticatedComponent'
 import NoteDetail from './components/NoteDetail'
+import NoteEdit from './components/NoteEdit'
+import './styles/index.css'
 // import registerServiceWorker from './registerServiceWorker';
 
 // redux
@@ -15,7 +17,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom'
 
 // create redux store -> reducers -> 'actions - actionType' | applyMiddleware()
 const store = createStore(
@@ -30,13 +32,14 @@ ReactDOM.render(
     <BrowserRouter>
       <LoadingComponent>
         <div>
-
           <Switch>
             <Route path="/login" component={Login} exact={true} />
+            <Redirect from="/logout" to="/login" />
             <AuthenticatedComponent>
               <Header />
-              <Route path="/" component={App} exact={true} />
+              <Route path="/:id/edit" component={NoteEdit} exact={true} />
               <Route path="/:id" component={NoteDetail} exact={true} />
+              <Route path="/" component={App} exact={true} />
             </AuthenticatedComponent>
           </Switch>
         </div>

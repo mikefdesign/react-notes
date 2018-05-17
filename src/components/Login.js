@@ -32,15 +32,19 @@ class Login extends Component {
               <i>Login with your favorite <strong>Social Network</strong> to start writing!</i>
             </h2>
           </div>
-          <div className="col-sm-6 text-center">
-            <button className="btn btn-danger btn-lg" onClick={this.props.googleLogin}>Login with Google</button>
-          </div>
-          <br />
-          <div className="col-sm-6 text-center">
-            <button className="btn btn-success btn-lg" onClick={this.props.twitterLogin}>Login with Twitter</button>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+
+            <button className="col-sm-6 btn btn-danger" onClick={this.props.googleLogin}>Login with Google</button>
+
+
+            <button className="col-sm-6 btn btn-success info " onClick={this.props.twitterLogin}>Login with Twitter</button>
+
           </div>
         </div>
       </div>
+
     )
   }
 }
